@@ -2,14 +2,198 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Laboratorio</title>
 </head>
 <body>
-    <header></header>
+    <header class="header">
+        <h1>TC2005B Laboratorio</h1>
+        <p>Cristian Chávez Guía, A01710680, a01710680@tec.mx</p>
+    </header>
     <nav></nav>
-    <section></section>
-    <footer></footer>
+    <section>
+        <h2>Preguntas</h2>
+        <table>
+            <tr>
+              <th>Preguntas</th>
+              <th>Respuestas</th>
+            </tr>
+            <tr>
+                <td>¿Cuál es la diferencia entre Internet y la World Wide Web?</td>
+                <td>Internet es una red global de computadoras conectadas y www es el conjunto de informacion y servicios accesibles a través de la internet</td>
+            </tr>
+            <tr>
+                <td>¿Cuáles son las partes de un URL?</td>
+                <td>
+                    <p>URL(Uniform Resource Locator) esta conformado por:</p>
+                    <ul>
+                        <li>Protocolo: Indica el método de transferencia de datos (HTTPS, HTTP, FTP, etc.).</li>
+                        <li>Subdominio: Agrupa contenido dentro del dominio principal (blog, tienda, etc.).</li>
+                        <li>Dominio: Nombre único que identifica al sitio web (wikipedia.org).</li>
+                        <li>Dominio de Nivel Superior (TLD): Categoriza el tipo de sitio web (.com, .org, .edu, etc.).</li>
+                        <li>Ruta: Directorio o archivo específico dentro del sitio web (carpeta/subcarpeta/archivo.html).</li>
+                        <li>Parámetros: Información adicional para la página (filtros, búsquedas, etc.).</li>
+                        <li>Fragmento: Ubicación específica dentro de la página (secciones, anclas, etc.).</li>
+                    </ul>
+                    <p>protocolo://nombre_de_dominio[:puerto]/ruta?parámetros#fragmento</p>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</td>
+                <td>
+                    <ul>
+                        <li>
+                            <p>GET: Se utiliza para recuperar un recurso del servidor.</p>
+                        </li>
+                        <li>
+                            <p>HEAD: Solo devuelve la cabecera del recurso, sin el cuerpo.</p>
+                        </li>
+                        <li>
+                            <p>POST: Se utiliza para enviar datos al servidor.</p>
+                        </li>
+                        <li>
+                            <p>PUT: Se utiliza para actualizar un recurso existente en el servidor.</p>
+                        </li>
+                        <li>
+                            <p>PATCH: Se utiliza para aplicar modificaciones parciales a un recurso.</p>
+                        </li>
+                        <li>
+                            <p>DELETE: Se utiliza para eliminar un recurso del servidor.</p>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</td>
+                <td>
+                    <p>Se debe utilizar el método POST al enviar un formulario HTML. Este método envia los datos del formulario de manera segura y privada al servidor web, ya que los datos son enviados en el cuerpo de la solicitud HTTP en lugar de ser mostrados directamente en la URL como en el método GET. Esto ayuda a proteger información sensible como contraseñas.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</td>
+                <td>
+                    <p>Se utiliza el método GET cuando a través de un navegador web se accede a una página a través de un URL. Este método se utiliza para recuperar un recurso del servidor.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</td>
+                <td>
+                    <p>Una respuesta HTTP con código 200 indica que la solicitud fue exitosa. No ocurrió ningún error.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?</td>
+                <td>
+                    <p>Sí, es responsabilidad del desarrollador corregir un error 404 en un sitio web. El error 404 indica que la página solicitada no fue encontrada, lo que puede deberse a una falta de mantenimiento o a un problema de diseño del sitio.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?</td>
+                <td>
+                    <p>Sí, es responsabilidad del desarrollador corregir un error 500 en un sitio web. El error 500 indica un problema interno del servidor, que puede ser causado por errores en el código o configuración del servidor, y afecta la funcionalidad del sitio para los usuarios.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</td>
+                <td>
+                    <p>Significa que ese atributo ya no es recomendable usarlo, esto al momento de estar desarrollando software nuevo para que este sea moderno y compatible con los nuevos estándares.</p>
+                    <p>Algunos elementos de HTML 4 que en HTML5 estén desaprobados son:</p>
+                    <ul>
+                        <li>applet</li>
+                        <li>basefont</li>
+                        <li>big</li>
+                        <li>center</li>
+                        <li>font</li>
+                        <li>frame</li>
+                        <li>frameset</li>
+                        <li>noframes</li>
+                        <li>strike</li>
+                        <li>tt</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</td>
+                <td>
+                    <h4>Existen múltiples diferencias entre HTML 4 y 5 algunas de ellas son:</h4>
+                    <p> Html 4 necesita plugins para mostrar y reproducir multimedia como Flash, html 5 no necesita plugins para reproducir contenido multimedia ya que este de manera nativa lo soporta. 
+                        En html 5 existe web storage y local storage lo que permite almacenar datos de un cliente, html 4 no tiene almacenamiento local.
+                        Html 5 implementa un mayor numero de etiquetas que mejoran la accesibilidad, contenido y el SEO del sitio web.
+                        Los formularios de html 4 son más limitados y no tienen validación nativa.
+                        Html 5 elimina la mayoría de las etiquetas obsoletas de html 4, su sintaxis es mas legible y tiene una mayor compatibilidad con navegadores modernos. 
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Qué componentes de estructura y estilo tiene una tabla?</td>
+                <td>
+                    <p>
+                        Una tabla en HTML tiene los siguientes componentes de estructura y estilo:
+                    </p>
+                    <pre>
+                        Componentes de Estructura:
+                        &lt;table&gt;: Define la tabla.
+                        &lt;tr&gt;: Define una fila dentro de la tabla.
+                        &lt;th&gt;: Define una celda de encabezado.
+                        &lt;td&gt;: Define una celda de datos.
+                        Componentes de Estilo:
+                        CSS: Se puede aplicar CSS para estilizar la tabla, incluyendo propiedades como border, background-color, font-family, padding, margin, entre otros.
+                    </pre>
+                        
+                </td>
+            </tr>
+            <tr>
+                <td>¿Cuáles son los principales controles de una forma HTML5?</td>
+                <td>
+                    <p>
+                        Los principales controles de un formulario HTML5 son:
+                    </p>
+                    <pre>
+                        1. &lt;input&gt;: Para ingresar texto, números u otros datos.
+                        2. &lt;textarea&gt;: Para ingresar texto largo.
+                        3. &lt;select&gt;: Para crear menús desplegables.
+                        4. &lt;button&gt;: Para enviar el formulario o realizar acciones específicas.
+                        5. &lt;label&gt;: Para asociar etiquetas descriptivas a los controles.
+                        6. &lt;fieldset&gt;: Para agrupar controles relacionados.
+                        7. &lt;legend&gt;: Para proporcionar una etiqueta descriptiva para un &lt;fieldset&gt;.
+                        8. &lt;input type="radio"&gt;: Para seleccionar una opción entre varias.
+                        9. &lt;input type="checkbox"&gt;: Para seleccionar una o varias opciones.
+                        10. &lt;input type="submit"&gt;: Para enviar el formulario.
+                        11. &lt;input type="reset"&gt;: Para restablecer los valores del formulario.
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? Puedes utitdzar la siguiente página para descubrirlo: http://html5test.com/ (Al responder la pregunta recuerda poner el navegador que utitdzas)</td>
+                <td>
+                    <p>No funciono la pagina web :C</p>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Cuál es el ciclo de vida de los sistemas de información?</td>
+                <td>
+                    <h4>Ciclo de Vida de los Sistemas de Información (CVSI):</h4>
+                    <p>El CVSI describe las etapas desde la concepción hasta el desmantelamiento de un sistema, incluyendo investigación, análisis de requisitos, diseño, desarrollo, operación, mantenimiento y desmantelamiento.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>¿Cuál es el ciclo de desarrollo de sistemas de información?</td>
+                <td>
+                    <h4>Ciclo de Desarrollo de Sistemas de Información (CDSI):</h4>
+                    <p>El CDSI se centra específicamente en la construcción y entrega del sistema, con etapas como recolección de requisitos, diseño, implementación, pruebas, despliegue y mantenimiento.</p>
+                </td>
+            </tr>
+          </table>
+    </section>
+    <aside>
+        <img src="imagenes/i121y6cbf1sb1.jpg" alt="momazo">
+    </aside>
+    <footer class="footer">
+        <p>
+            <a href="https://code.visualstudio.com/">visual studio code</a>
+        </p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
