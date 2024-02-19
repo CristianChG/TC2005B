@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="imagenes/icono.ico">
     <link rel="stylesheet" href="style.min.css">
+    <!-- minify -->
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <!-- latest -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- core style only -->
+    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
     <title>Laboratorio</title>
 </head>
 <body>
@@ -22,17 +31,62 @@
     </nav>
     <main>
         <section>
-            <article>
-                <h2>Sobre mí</h2>
-                <p class="sobremi">Mi nombre es Cristian Chávez Guía, tengo 20 años y resido actualmente en Querétaro. Estoy estudiando ingeniería en tecnologías computacionales en el Tec de Monterrey campus Querétaro. Me gustaría dedicarme al desarrollo de software en un futuro, aún no tengo idea de en qué área o en qué especializarme, pero eso lo averiguaré en el transcurso del tiempo. Me gusta correr y soy parte del representativo de atletismo de la escuela, me enfoco en 5 y 10 kilómetros, aunque también me gustan los 1500 metros.</p>
-            </article>
+            <div class="nes-container is-dark with-title nes-text is-success">
+                <p class="title">Sobre mí</p>
+                <p>Mi nombre es Cristian Chávez Guía, tengo 20 años y resido actualmente en Querétaro. Estoy estudiando ingeniería en tecnologías computacionales en el Tec de Monterrey campus Querétaro. Me gustaría dedicarme al desarrollo de software en un futuro, aún no tengo idea de en qué área o en qué especializarme, pero eso lo averiguaré en el transcurso del tiempo. Me gusta correr y soy parte del representativo de atletismo de la escuela, me enfoco en 5 y 10 kilómetros, aunque también me gustan los 1500 metros.</p>
+            </div>
         </section>
-        <aside>
-            <h3>Unos buenos memes de calaveras.</h3>
-            <img src="imagenes/i121y6cbf1sb1.jpg" alt="momazo">
-            <img src="imagenes/1333ds.png" alt="momazo2">
-            <img src="imagenes/32432.jpg" alt="momazo3">
-        </aside>
+
+        <section>
+            <h3>Estoy asi de acabar la tarea xd: </h3>
+            <progress class="nes-progress is-error" value="95" max="100"></progress>
+        </section>
+
+        <section>
+            <h3>¿Te gustó la página?</h3>
+            <label>
+                <input type="radio" class="nes-radio" name="answer" checked />
+                <span>Yes</span>
+              </label>
+              
+              <label>
+                <input type="radio" class="nes-radio" name="answer" />
+                <span>No</span>
+              </label>
+        </section>
+
+        <section>
+            <button type="button" class="nes-btn is-primary" onclick="document.getElementById('dialog-default').showModal();">
+              Open dialog
+            </button>
+            <dialog class="nes-dialog" id="dialog-default">
+              <form method="dialog">
+                <p class="title">Dialog</p>
+                <p>Hola soy yo de nuevo</p>
+                <menu class="dialog-menu">
+                  <button class="nes-btn">Cancel</button>
+                  <button class="nes-btn is-primary">Confirm</button>
+                </menu>
+              </form>
+            </dialog>
+          </section>
+          <section class="icon-list">
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large heart"></i>
+            <!-- Copyright Nintendo -->
+            <i class="nes-mario"></i>
+            <i class="nes-ash"></i>
+            <i class="nes-pokeball"></i>
+            <i class="nes-bulbasaur"></i>
+            <i class="nes-charmander"></i>
+            <i class="nes-squirtle"></i>
+            <i class="nes-kirby"></i>
+          </section>
     </main>
 
     <footer id="footer">
