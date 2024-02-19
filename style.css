@@ -1,4 +1,85 @@
-table, th, td {
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    background-color: #f0ece2;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #f0ece2;
+    text-align: right;
+    padding: 20px;
+}
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar li {
+    margin-right: 10px;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
     border: 1px solid black;
-    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+.navbar li a:hover {
+    background-color: lightgray;
+}
+
+main {
+    background-color: #dfd3c3;
+    display: flex;
+}
+
+main section {
+    padding: 15px;
+    font-size: 1em;
+}
+
+section {
+    background-color: #dfd3c3;
+    flex: 2;
+}
+
+#article {
+    font-size: 17px;
+    padding: 30px;
+}
+
+aside {
+    background-color: #c7b198;
+    flex: 1;
+    padding: 15px;
+}
+aside img {
+    height: 420px;
+    width: 100%;
+}
+
+.sobremi{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#footer{
+    background-color: #596e79; 
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
 }
