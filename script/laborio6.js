@@ -3,7 +3,7 @@ function incrementar(producto) {
     var totalElemento = document.getElementById('total_' + producto);
     var cantidad = parseInt(cantidadElemento.textContent.replace(/[()]/g, ''));
     cantidad++;
-    cantidadElemento.textContent = '(' + cantidad + ')';
+    cantidadElemento.textContent = '('  + cantidad + ')';
     totalElemento.textContent = cantidad * getPrecio(producto);
     actualizarTotalCompra();
     actualizarBotonMenos(producto, cantidad);
