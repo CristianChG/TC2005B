@@ -1,4 +1,6 @@
-const http = require('http');
+const express = require('express');
+const router = express.Router();
+
 const filesystem = require('fs');
 
 const html_header = `
@@ -39,6 +41,12 @@ const html_header = `
           <li class="nav-item">
             <a class="nav-link" href="/laboratorio6">Laboratorio 6</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/PP/preguntas">Preguntas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/PP/respuestas">Respuestas</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -48,6 +56,7 @@ const html_header = `
     <body>
 
 `;
+
 
 const html_footer = `
 <footer class="container-fluid fixed-bottom bg-dark text-light">
@@ -62,67 +71,9 @@ const html_footer = `
   </html>
 `;
 
-const server = http.createServer( (request, response) => {    
-  console.log(request.url);
-  if (request.url === '/'  && request.method == 'GET') {
-    response.setHeader('Content-Type', 'text/html');
-    response.write(html_header);
-    response.write(`
-    <main class="container-fluid p-3">
-      <div class="row">
-        <div class="col-md-8">
-          <h3 class="text-center">Sobre mí</h3>
-          <p class="p-4">Mi nombre es Cristian Chávez Guía, tengo 20 años y resido actualmente en Querétaro. Estoy estudiando ingeniería en tecnologías computacionales en el Tec de Monterrey campus Querétaro. Me gustaría dedicarme al desarrollo de software en un futuro, aún no tengo idea de en qué área o en qué especializarme, pero eso lo averiguaré en el transcurso del tiempo. Me gusta correr y soy parte del representativo de atletismo de la escuela, me enfoco en 5 y 10 kilómetros, aunque también me gustan los 1500 metros.</p>
-
-          <form action='/' method="POST">
-            <div class="mb-3">
-              <label for="usuario" class="form-label">Usuario</label>
-              <input type="text" class="form-control" id="usuario" name="usuario">
-              <div class="form-text">Escribe tu nombre</div>
-            </div>
-            <div class="mb-3">
-              <label for="mensaje" class="form-label">Mensaje</label>
-              <input type="text" class="form-control" id="mensaje" name="mensaje">
-              <div class="form-text">Escribe un mensaje :)</div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-
-        </div>
-        <div class="col-md-4">
-          <aside class="text-center">
-            <h3>Hola tonotos</h3>
-            <iframe width="420" height="315" src="https://www.youtube.com/embed/Ma5hTmmmTbI" title="hola tonotos el gato" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </aside>
-        </div>
-      </div>
-    </main>
-    `);
-    response.write(html_footer);
-    response.end();
-  }else if(request.url == '/' && request.method == 'POST'){
-    const datos = [];
-    request.on('data', (dato) => {
-      datos.push(dato);
-    });
-
-    return request.on('end', () => {
-      const datos_completos = Buffer.concat(datos).toString();
-      console.log(datos_completos);
-      const usuario = datos_completos.split('&')[0].split('=')[1];
-      console.log(usuario);
-      const mensaje = datos_completos.split('&')[1].split('=')[1];
-      console.log(usuario, mensaje);
-      response.writeHead(302, { 'Location': '/' });
-      response.end();
-      const datos_completos2 = `Usuario: ${usuario}, Mensaje: ${mensaje}\n`;
-
-      filesystem.writeFileSync('archivo.txt', datos_completos2);
-    });
-    
-  }else if(request.url == '/halo'){
-    response.write(html_header);
-    response.write(`
+router.get('/halo', (request, response, next) => {
+    let html = html_header;
+    html += `
     <div class="container-fluid p-5">
     <h1 class="text-center">Personajes de Halo</h1>
     <div class="row">
@@ -182,12 +133,51 @@ const server = http.createServer( (request, response) => {
       </div>
     </div>
   </div>
-    `);
-    response.write(html_footer);
-    response.end();
-  }else if(request.url == '/laboratorio6'){
-    response.write(html_header);
-    response.write(`
+    `;
+    html += html_footer;
+    response.send(html);
+});
+
+router.get('/', (request, response, next) => {
+    let html = html_header;
+    html += `
+    <main class="container-fluid p-3">
+    <div class="row">
+      <div class="col-md-8">
+        <h3 class="text-center">Sobre mí</h3>
+        <p class="p-4">Mi nombre es Cristian Chávez Guía, tengo 20 años y resido actualmente en Querétaro. Estoy estudiando ingeniería en tecnologías computacionales en el Tec de Monterrey campus Querétaro. Me gustaría dedicarme al desarrollo de software en un futuro, aún no tengo idea de en qué área o en qué especializarme, pero eso lo averiguaré en el transcurso del tiempo. Me gusta correr y soy parte del representativo de atletismo de la escuela, me enfoco en 5 y 10 kilómetros, aunque también me gustan los 1500 metros.</p>
+  
+        <form action='/' method="POST">
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuario" name="usuario">
+            <div class="form-text">Escribe tu nombre</div>
+          </div>
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <input type="text" class="form-control" id="mensaje" name="mensaje">
+            <div class="form-text">Escribe un mensaje :)</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  
+      </div>
+      <div class="col-md-4">
+        <aside class="text-center">
+          <h3>Hola tonotos</h3>
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/Ma5hTmmmTbI" title="hola tonotos el gato" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </aside>
+      </div>
+    </div>
+  </main>
+    `;
+    html += html_footer;
+    response.send(html);
+  });
+
+  router.get('/laboratorio6', (request, response, next) => {
+    let html = html_header;
+    html += `
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Bienvenido!</strong> Selecciona los botones para agregar o eliminar productos
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -315,16 +305,16 @@ const server = http.createServer( (request, response) => {
         }
       });
     });</script>
-    `);
-    response.write(html_footer);
-    response.end();
-  }else {
-    response.statusCode = 404;
-    response.write(html_header);
-    response.write('<h2>Error 404</h2>');
-    response.write(html_footer);
-    response.end();
-  }
-});
+    `;
+    html += html_footer;
+    response.send(html);
+  });
+  
+  router.post('/', (request, response, next) => {    
+    console.log(request.body);
+    const datos = 'Usuario: ' + request.body.usuario + ', Mensaje: ' + request.body.mensaje + '\n';
+    filesystem.writeFileSync('archivo.txt', datos,{ flag: 'a' });
+    response.redirect('/');
+  });
 
-server.listen(3000);
+  module.exports = router;//
