@@ -1,0 +1,131 @@
+<%- include('includes/header.ejs') %>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Bienvenido!</strong> Selecciona los botones para agregar o eliminar productos
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+    <div class="mt-1 container-fluid --bs-emphasis-color">
+        <div class="row">
+            <div class="col">
+              <div class="card text-center">
+                <img src="imagenes/samsungs24.png" class="card-img-top" alt="galaxy s24">
+                <div class="card-body">
+                  <h5 class="card-title">Galaxy S24 Ultra</h5>
+                  <p class="card-text">Color: Gris titaneo</p>
+                  <p class="card-text">Precio: $33,999</p>
+                  <button type="button" class="btn btn-primary" onclick="decrementar('s24')">-</button>
+                  <span id="cantidad_s24">(0)</span>
+                  <button type="button" class="btn btn-primary" onclick="incrementar('s24')">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <div class="card text-center">
+                  <img src="imagenes/galaxybudsfe.png" class="card-img-top" alt="galaxy buds fe">
+                  <div class="card-body">
+                    <h5 class="card-title">Galaxy Buds FE</h5>
+                    <p class="card-text">Color: Grafito</p>
+                    <p class="card-text">Precio: $1,499</p>
+                    <button type="button" class="btn btn-primary" onclick="decrementar('buds')">-</button>
+                  <span id="cantidad_buds">(0)</span>
+                  <button type="button" class="btn btn-primary" onclick="incrementar('buds')">+</button>
+                  </div>
+                </div>
+              </div>
+            <div class="col">
+              <div class="card text-center">
+                <img src="imagenes/galaxywatch6.png" class="card-img-top" alt="galaxy watch 6">
+                <div class="card-body">
+                  <h5 class="card-title">Galaxy Watch 6</h5>
+                  <p class="card-text">Color: Dorado</p>
+                  <p class="card-text">Precio: $6,999</p>
+                  <button type="button" class="btn btn-primary" onclick="decrementar('watch')">-</button>
+                  <span id="cantidad_watch">(0)</span>
+                  <button type="button" class="btn btn-primary" onclick="incrementar('watch')">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="card text-center">
+      <div class="card-header">
+        Lista de compras
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Total</h5>
+        <p class="card-text">Galaxy S24 Ultra ($ <span id="total_s24">0</span>)</p>
+        <p class="card-text">Galaxy Buds FE ($ <span id="total_buds">0</span>)</p>
+        <p class="card-text">Galaxy Watch 6 ($ <span id="total_watch">0</span>)</p>
+      </div>
+      <div class="card-footer text-body-secondary">
+        Total: 
+        <span id="total_compra">0</span>
+      </div>
+    </div>
+    <script>function incrementar(producto) {
+      var cantidadElemento = document.getElementById('cantidad_' + producto);
+      var totalElemento = document.getElementById('total_' + producto);
+      var cantidad = parseInt(cantidadElemento.textContent.replace(/[()]/g, ''));
+      cantidad++;
+      cantidadElemento.textContent = '('  + cantidad + ')';
+      totalElemento.textContent = cantidad * getPrecio(producto);
+      actualizarTotalCompra();
+      actualizarBotonMenos(producto, cantidad);
+    }
+  
+    function decrementar(producto) {
+      var cantidadElemento = document.getElementById('cantidad_' + producto);
+      var totalElemento = document.getElementById('total_' + producto);
+      var cantidad = parseInt(cantidadElemento.textContent.replace(/[()]/g, ''));
+      if (cantidad > 0) {
+        cantidad--;
+        cantidadElemento.textContent = '(' + cantidad + ')';
+        totalElemento.textContent = cantidad * getPrecio(producto);
+        actualizarTotalCompra();
+        actualizarBotonMenos(producto, cantidad);
+      }
+    }
+  
+    function getPrecio(producto) {
+      switch (producto) {
+        case 's24':
+          return 33999;
+        case 'buds':
+          return 1499;
+        case 'watch':
+          return 6999;
+        default:
+          return 0;
+      }
+    }
+  
+    function actualizarTotalCompra() {
+      var total_s24 = parseInt(document.getElementById('total_s24').textContent);
+      var total_buds = parseInt(document.getElementById('total_buds').textContent);
+      var total_watch = parseInt(document.getElementById('total_watch').textContent);
+      var total_compra = total_s24 + total_buds + total_watch;
+      document.getElementById('total_compra').textContent = total_compra;
+    }
+  
+    function actualizarBotonMenos(producto, cantidad) {
+      var botonMenos = document.querySelector('#cantidad_' + producto).previousElementSibling;
+      if (cantidad === 0) {
+        botonMenos.style.display = 'none';
+      } else {
+        botonMenos.style.display = 'inline-block';
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      var cantidades = document.querySelectorAll('[id^="cantidad_"]');
+      cantidades.forEach(function(elemento) {
+        var cantidad = parseInt(elemento.textContent.replace(/[()]/g, ''));
+        if (cantidad === 0) {
+          elemento.previousElementSibling.style.display = 'none';
+        }
+      });
+    });</script>
+
+<%- include('includes/footer.ejs') %>

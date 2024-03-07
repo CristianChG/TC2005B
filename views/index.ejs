@@ -1,0 +1,38 @@
+<%- include('includes/header.ejs') %>
+<main class="container-fluid p-3">
+    <div class="row">
+      <div class="col-md-8">
+        <h3 class="text-center">Sobre mí</h3>
+        <p class="p-4">Mi nombre es Cristian Chávez Guía, tengo 20 años y resido actualmente en Querétaro. Estoy estudiando ingeniería en tecnologías computacionales en el Tec de Monterrey campus Querétaro. Me gustaría dedicarme al desarrollo de software en un futuro, aún no tengo idea de en qué área o en qué especializarme, pero eso lo averiguaré en el transcurso del tiempo. Me gusta correr y soy parte del representativo de atletismo de la escuela, me enfoco en 5 y 10 kilómetros, aunque también me gustan los 1500 metros.</p>
+  
+        <form action='/' method="POST">
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuario" name="usuario">
+            <div class="form-text">Escribe tu nombre</div>
+          </div>
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <input type="text" class="form-control" id="mensaje" name="mensaje"> 
+            <div class="form-text">Escribe un mensaje :)</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div class="mt-4">
+          <h4>Mensajes:</h4>
+          <% mensajes.forEach(mensaje => { %>
+            <p><strong><%= mensaje.usuario %>:</strong> <%= mensaje.mensaje %></p>
+          <% }); %>
+        </div>
+  
+      </div>
+      <div class="col-md-4">
+        <aside class="text-center">
+          <h3>Hola tonotos</h3>
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/Ma5hTmmmTbI" title="hola tonotos el gato" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </aside>
+      </div>
+    </div>
+  </main>
+<%- include('includes/footer.ejs') %>
