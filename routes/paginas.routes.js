@@ -1,31 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-// Importar mensajes desde app.js
-// Arreglo para almacenar los mensajes y usuarios
-const mensajes = require('../app').mensajes;
+const mensajesController = require('../controllers/mensajes.controller');
 
-router.get('/halo', (request, response, next) => {
-  //Mandar archivo halo.ejs como respuesta
-  response.render('halo');
-});
+router.get('/halo', mensajesController.get_halo);
 
-router.get('/', (request, response, next) => {
-  response.render('index', { mensajes: mensajes });
-});
+router.get('/', mensajesController.get_index);
 
-router.get('/laboratorio6', (request, response, next) => {
-  response.render('laboratorio6');
-});
-  
-router.post('/', (request, response, next) => {    
-  console.log(request.body);
-  const nuevoMensaje = {
-    usuario: request.body.usuario,
-    mensaje: request.body.mensaje
-  };
-  mensajes.push(nuevoMensaje);//Agrega un nuevo mensaje al arreglo
-  response.redirect('/');
-});
+router.post('/', mensajesController.post_index);
+
+router.get('/laboratorio6', mensajesController.get_laboratorio6);
 
 module.exports = router;//

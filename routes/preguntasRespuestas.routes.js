@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/preguntas', (request, response, next) => {
-  response.render('preguntas');
-});
+const mensajesController = require('../controllers/mensajes.controller');
 
-router.get('/respuestas', (request, response, next) => {
-  response.render('respuestas');
-});
+router.get('/preguntas', mensajesController.get_preguntas);
+
+router.get('/respuestas', mensajesController.get_respuestas);
 
 module.exports = router;
