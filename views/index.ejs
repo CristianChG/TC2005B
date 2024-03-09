@@ -18,6 +18,9 @@
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <% if(usuario != '') { %> 
+          <div>El ultimo usuario fue <%= usuario %>.</div>
+        <% } %>
 
         <div class="mt-4">
           <h4>Mensajes:</h4>

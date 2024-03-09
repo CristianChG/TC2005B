@@ -17,6 +17,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 const modulo1 = require('./routes/paginas.routes.js');
 const modulo2 = require('./routes/preguntasRespuestas.routes.js');
 
