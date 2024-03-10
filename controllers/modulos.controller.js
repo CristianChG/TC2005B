@@ -1,18 +1,25 @@
 exports.get_halo = (request, response, next) => {
-    //Mandar archivo halo.ejs como respuesta
-    response.render('halo');
+    response.render('halo', {
+        username: request.session.username || '',
+    });
 };
 
 exports.get_laboratorio6 = (request, response, next) => {
-    response.render('laboratorio6');
+    response.render('laboratorio6', {
+        username: request.session.username || '',
+    });
 };
 
 //Modulos de preguntas y repuestas
 exports.get_respuestas = (request, response, next) => {
-    response.render('respuestas');
+    response.render('respuestas', {
+        username: request.session.username || '',
+    });
 };
 
 
 exports.get_preguntas = (request, response, next) => {
-    response.render('preguntas');
+    response.render('preguntas', {
+        username: request.session.username || '',
+    });
 };

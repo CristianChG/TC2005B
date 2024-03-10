@@ -8,6 +8,7 @@ exports.get_index = (request, response, next) => {
     const mensajes = Mensaje.fetchAll();
     response.render('index', { mensajes: mensajes ,
     usuario: request.cookies.usuario || '',
+    username: request.session.username || '',
     });
 };
 
@@ -21,8 +22,8 @@ exports.post_index = (request, response, next) => {
     const nuevoMensaje = new Mensaje(request.body.usuario, request.body.mensaje);
     nuevoMensaje.save(); // Guarda el nuevo mensaje utilizando el método save() del modelo
 
-    //Crear una cookie
-    response.setHeader('Set-Cookie', `usuario=${nuevoMensaje.usuario}`);
+    //HttpOnly: Para proteger la cookie de ataques XSS, no se puede acceder a la cookie desde JavaScript
+    response.setHeader('Set-Cookie','usuario=' + nuevoMensaje.usuario + '; HttpOnly');
     
     response.redirect('/');
 }
