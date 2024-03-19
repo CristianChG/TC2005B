@@ -5,11 +5,24 @@ exports.get_index = (request, response, next) => {
     // Obtener todos los mensajes utilizando el método fetchAll() del modelo
     console.log(request.cookies);
     console.log(request.cookies.usuario);
+    Mensaje.fetchAll().then(([rows, fieldData]) => {
+        response.render('index', { 
+            mensajes: mensajes = rows,
+            usuario: request.cookies.usuario || '',
+            username: request.session.username || '',
+            });
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+
+    /*
     const mensajes = Mensaje.fetchAll();
     response.render('index', { mensajes: mensajes ,
     usuario: request.cookies.usuario || '',
     username: request.session.username || '',
     });
+    */
 };
 
 // Importar mensajes desde app.js
@@ -27,4 +40,3 @@ exports.post_index = (request, response, next) => {
     
     response.redirect('/');
 }
-
