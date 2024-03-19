@@ -1,16 +1,19 @@
-exports.get_login = (request, response, next) => {
-    response.render('login', {
-        username: request.session.username || '',
-    });
-};
+// users.controller.js
+const Usuario = require('../models/usuario.model');
 
 exports.post_login = (request, response, next) => {
-    request.session.username = request.body.username;
-    response.redirect('/');
-};
-
-exports.get_logout = (request, response, next) => {
-    request.session.destroy(() => {
-        response.redirect('/users/login'); //Este código se ejecuta cuando la sesión se elimina.
-    });
+    const { username, password } = request.body;
+    Usuario.findByUsername(username)
+        .then(([rows, fieldData]) => {
+            if (rows.length > 0 && rows[0].password === password) {
+                request.session.username = username;
+                response.redirect('/');
+            } else {
+                response.redirect('/users/login');
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            response.status(500).send('Error interno del servidor');
+        });
 };
