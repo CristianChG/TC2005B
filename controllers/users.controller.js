@@ -52,3 +52,21 @@ exports.get_register = (request, response, next) => {
         csrfToken: request.csrfToken()
     });
 };
+
+
+exports.post_login = (request, response, next) => {
+    // Lógica de autenticación del usuario
+
+    // Después de autenticar al usuario, obtener sus roles y permisos
+    const userId = request.user.id; // Suponiendo que el ID del usuario está disponible después de la autenticación
+    const userRoles = await UserRoleModel.getUserRoles(userId);
+    const roleIds = userRoles.map(role => role.role_id);
+    const userPermissions = await RolePermissionModel.getRolePermissions(roleIds);
+
+    // Almacenar los roles y permisos en la sesión del usuario
+    request.session.roles = userRoles;
+    request.session.permissions = userPermissions;
+
+    // Redireccionar a la página principal
+    response.redirect('/');
+};

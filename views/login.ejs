@@ -24,6 +24,12 @@
               </div>
             </div>
             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+
+            <!-- En una vista donde se muestra un botón -->
+<% if (permissions.includes('create_post')) { %>
+  <button>Create Post</button>
+<% } %>
+
           </form>
         </div>
       </div>
