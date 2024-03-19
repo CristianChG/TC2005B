@@ -33,6 +33,11 @@ app.use('/users', rutasUsuarios);
 // Cookie parser
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
+const csrf = require('csurf');
+
+// Configuración de CSRF
+const csrfProtection = csrf();
+app.use(csrfProtection);
 
 const modulo1 = require('./routes/paginas.routes.js');
 const modulo2 = require('./routes/preguntasRespuestas.routes.js');
